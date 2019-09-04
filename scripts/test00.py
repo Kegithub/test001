@@ -1,9 +1,14 @@
 import pytest, allure
 
 
-class Test:
-    allure.description("这是一个测试")
-    pytest.mark.usefixtures()
-    def test_001(self):
-        print("---------------1")
-        assert True
+class TestAllure:
+    def setup(self):
+        pass
+
+    def teardown(self):
+        pass
+
+    @pytest.mark.parametrize("a", [1, 2, 3])
+    @allure.step('我是测试步骤001')
+    def test_al(self, a):
+        assert a != 2
